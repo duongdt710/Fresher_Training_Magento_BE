@@ -1,0 +1,56 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Config:etc/system_file.xsd">
+    <system>
+        <tab id="packt" translate="label" sortOrder="500">
+        <label>Packt</label>
+        </tab>
+
+        <section id="helloworld" translate="label" type="text" sortOrder="100" showInDefault="1" showInWebsite="1" showInStore="1">
+            <label>HelloWorld</label>
+            <tab>packt</tab>
+            <resource>Packt_HelloWorld::config_helloworld</resource>
+
+            <group id="hellopage" translate="label" type="text" sortOrder="1" showInDefault="1" showInWebsite="1" showInStore="1">
+
+                <label>HelloWorld page settings</label>
+
+                <field id="source_model_test" translate="label" type="select" sortOrder="30" showInDefault="1" showInWebsite="1" showInStore="1">
+                <source_model>Packt\HelloWorld\Model\Config\Source\Relation</source_model>
+                <label>Source model test</label>
+                </field>
+
+                <field id="is_enabled" translate="label" type="select" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+                <label>Is Enabled</label>
+                <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+                
+                <field id="header_title" translate="label" type="text" sortOrder="20" showInDefault="1" showInWebsite="1" showInStore="1">
+                <label>Header title</label>
+                </field>
+
+                <field id="text_field" translate="label" type="text" sortOrder="40" showInDefault="1" showInWebsite="1" showInStore="1">
+                <label>Text Field</label>
+                </field>
+
+                <field id="abcd" translate="label" type="select" sortOrder="30" showInDefault="1" showInWebsite="1" showInStore="1">
+                <label>Yes/No_Field_abcd</label>
+                <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+
+                <field id="custom_select" translate="label" type="select" sortOrder="50" showInDefault="1" showInWebsite="1" showInStore="1">
+                <label>Custom Select Field</label>
+                <source_model>Packt\HelloWorld\Model\Config\Source\Custome</source_model>
+                </field>
+
+                <field id="mageworx_collect" translate="label comment" onClick="window.location.href=window.location.href" type="button" sortOrder="60" showInDefault="1" showInWebsite="1" showInStore="0">
+                    <frontend_model>Packt\HelloWorld\Block\System\Config\Collect</frontend_model>
+                    <label>Reload Page</label>
+                </field>
+
+            </group>
+        </section>
+    </system>
+</config>
+
+

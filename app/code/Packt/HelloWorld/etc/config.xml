@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Store:etc/con
+fig.xsd">
+<default>
+    <helloworld>
+        <hellopage>
+            <is_enabled>1</is_enabled>
+            <header_title>HelloWorld title</header_title>
+            <text_field>I’m a text field</text_field>
+            <abcd>1</abcd>
+        </hellopage>
+    </helloworld>
+</default>
+</config>

@@ -1,0 +1,58 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Backend:etc/menu.xsd">
+<menu>
+    <add
+    id="Packt_HelloWorld::helloworld"
+    title="HelloWorld"
+    module="Packt_HelloWorld"
+    sortOrder="50"
+    resource="Packt_HelloWorld::helloworld"
+    />
+    <add
+    id="Packt_HelloWorld::index"
+    title="Helloworld Index"
+    module="Packt_HelloWorld"
+    sortOrder="60"
+    parent="Packt_HelloWorld::helloworld"
+    action="helloworld/index/"
+    resource="Packt_HelloWorld::index"
+    />
+    <add
+    id="Packt_HelloWorld::subscription"
+    title="Subscriptions"
+    module="Packt_HelloWorld"
+    sortOrder="70"
+    parent="Packt_HelloWorld::helloworld"
+    action="helloworld/subscription/"
+    resource="Packt_HelloWorld::subscription"
+    />
+    <add
+    id="Packt_HelloWorld::component"
+    title="Component"
+    module="Packt_HelloWorld"
+    sortOrder="75" 
+    parent="Packt_HelloWorld::helloworld"
+    action="helloworld/component/"
+    resource="Packt_HelloWorld::helloworld"
+    />
+    <add
+    id="Packt_HelloWorld::movie"
+    title="Movie"
+    module="Packt_HelloWorld"
+    sortOrder="80"
+    parent="Packt_HelloWorld::helloworld"
+    action="helloworld/movie/"
+    resource="Packt_HelloWorld::movie"
+    />
+    <add
+    id="Packt_HelloWorld::director"
+    title="Director"
+    module="Packt_HelloWorld"
+    sortOrder="85"
+    parent="Packt_HelloWorld::helloworld"
+    action="helloworld/director/"
+    resource="Packt_HelloWorld::director"
+    />
+</menu>
+</config>

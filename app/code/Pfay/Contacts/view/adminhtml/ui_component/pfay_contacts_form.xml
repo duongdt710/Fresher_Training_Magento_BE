@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Ui:etc/ui_configuration.xsd">
+    <argument name="data" xsi:type="array">
+        <item name="js_config" xsi:type="array">
+            <item name="provider" xsi:type="string">pfay_contacts_form.contacts_form_data_source</item>
+            <item name="deps" xsi:type="string">pfay_contacts_form.contacts_form_data_source</item>
+        </item>
+        <item name="label" xsi:type="string" translate="true">Sample Form</item>
+        <item name="layout" xsi:type="array">
+            <item name="type" xsi:type="string">tabs</item>
+        </item>
+
+        <item name="buttons" xsi:type="array">
+            <item name="back" xsi:type="string">Pfay\Contacts\Block\Adminhtml\Contact\Edit\BackButton</item>
+            <item name="delete" xsi:type="string">Pfay\Contacts\Block\Adminhtml\Contact\Edit\DeleteButton</item>
+            <item name="reset" xsi:type="string">Pfay\Contacts\Block\Adminhtml\Contact\Edit\ResetButton</item>
+            <item name="save" xsi:type="string">Pfay\Contacts\Block\Adminhtml\Contact\Edit\SaveButton</item>
+        </item>
+    </argument>
+
+    <dataSource name="contacts_form_data_source">
+        <argument name="dataProvider" xsi:type="configurableObject">
+            <argument name="class" xsi:type="string">Pfay\Contacts\Model\Contact\DataProvider</argument>
+            <argument name="name" xsi:type="string">contacts_form_data_source</argument>
+            <argument name="primaryFieldName" xsi:type="string">pfay_contacts_id</argument>
+            <argument name="requestFieldName" xsi:type="string">id</argument>
+        </argument>
+        <argument name="data" xsi:type="array">
+            <item name="js_config" xsi:type="array">
+                <item name="component" xsi:type="string">Magento_Ui/js/form/provider</item>
+            </item>
+        </argument>
+    </dataSource>
+
+    <fieldset name="contact">
+        <argument name="data" xsi:type="array">
+            <item name="config" xsi:type="array">
+                <item name="label" xsi:type="string" translate="true">Sample Fieldset</item>
+            </item>
+        </argument>
+
+        <!-- This field represents form id and is hidden -->
+        <field name="pfay_contact_id">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="visible" xsi:type="boolean">false</item>
+                    <item name="dataType" xsi:type="string">text</item>
+                    <item name="formElement" xsi:type="string">input</item>
+                    <item name="source" xsi:type="string">contact</item>
+                </item>
+            </argument>
+        </field>
+
+        <!-- This field has data type 'text' and standard 'input' form element and looks like input -->
+        <field name="name">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="label" xsi:type="string">Name</item>
+                    <item name="visible" xsi:type="boolean">true</item>
+                    <item name="dataType" xsi:type="string">text</item>
+                    <item name="formElement" xsi:type="string">input</item>
+                    <item name="source" xsi:type="string">contact</item>
+                </item>
+            </argument>
+        </field>
+
+
+        <!-- This field has data type 'text' and standard 'input' form element and looks like input -->
+        <field name="email">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="label" xsi:type="string">Email</item>
+                    <item name="visible" xsi:type="boolean">true</item>
+                    <item name="dataType" xsi:type="string">text</item>
+                    <item name="formElement" xsi:type="string">input</item>
+                    <item name="source" xsi:type="string">contact</item>
+                </item>
+            </argument>
+        </field>
+
+    </fieldset>
+</form>
