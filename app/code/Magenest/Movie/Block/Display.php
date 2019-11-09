@@ -1,14 +1,21 @@
-<?php
-namespace Magenest\Movie\Block;
-class Display extends \Magento\Framework\View\Element\Template
-{
-	public function __construct(\Magento\Framework\View\Element\Template\Context $context)
-	{
-		parent::__construct($context);
-	}
+<?php namespace Magenest\Movie\Block;
 
-	public function sayHello()
-	{
-		return __('Hello World');
-	}
+use Magento\Framework\View\Element\Template;
+use Magenest\Movie\Model\ResourceModel\Movie\CollectionFactory;
+
+class Display extends Template
+{
+    protected $_collectionFactory;
+
+    public function __construct(CollectionFactory $collectionFactory ,Template\Context $context, array $data = [])
+    {
+        $this->_collectionFactory=$collectionFactory;
+        parent::__construct($context, $data);
+    }
+
+    public function getDataDisplay()
+    {
+        $item=$this->_collectionFactory->create();
+        return $item->getData();
+    }
 }

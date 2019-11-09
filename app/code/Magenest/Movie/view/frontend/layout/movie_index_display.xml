@@ -1,6 +1,9 @@
 <?xml version="1.0"?>
 <page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" layout="1column" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
     <referenceContainer name="content">
-        <block class="Magenest\Movie\Block\Display" name="movie_display" template="Magenest_Movie::sayhello.phtml" />
+<!--        <block class="Magenest\Movie\Block\Display" name="movie_display" template="Magenest_Movie::sayhello.phtml" />-->
+        <block class="Magenest\Movie\Block\Display" name="movie_display" template="Magenest_Movie::movie.phtml" />
+        <block class="Magenest\Movie\Block\Display" name="actor_display" template="Magenest_Movie::actor.phtml" />
+        <block class="Magenest\Movie\Block\Display" name="director_display" template="Magenest_Movie::director.phtml" />
     </referenceContainer>
 </page>
