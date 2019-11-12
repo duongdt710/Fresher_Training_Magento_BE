@@ -24,6 +24,9 @@
                     <label>Button</label>
                     <frontend_model>Magenest\Movie\Block\System\Config\Form\Button</frontend_model>
                 </field>
+                <field id="text_field" translate="label" type="text" ortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Text Field</label>
+                </field>
             </group>
         </section>
 

@@ -4,6 +4,9 @@ class Movie extends \Magento\Framework\Model\AbstractModel
 {
     const CACHE_TAG = 'magenest_movie';
 
+    protected $_eventPrefix = 'movie';
+    protected $_eventObject = 'movie';
+
     protected function _construct()
     {
         $this->_init('Magenest\Movie\Model\ResourceModel\Movie');

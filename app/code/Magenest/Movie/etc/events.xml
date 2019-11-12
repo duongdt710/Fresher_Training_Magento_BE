@@ -1,7 +1,15 @@
 <?xml version="1.0"?>
 <config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
         xsi:noNamespaceSchemaLocation="urn:magento:framework:Event/etc/events.xsd">
-    <event name="movie_register_visit">
-        <observer name="register_movie_visit" instance="Magenest\Movie\Observer\RegisterVisitObserver" />
+    <event name="customer_save_before">
+        <observer name="register_helloworld_visit"
+                  instance="Magenest\Movie\Observer\RegisterVisitObserver" />
+    </event>
+    <event name="movie_save_before">
+        <observer name="rating_zero"
+                  instance="Magenest\Movie\Observer\SaveMovieRating" />
+    </event>
+    <event name="admin_system_config_changed_section_movie">
+        <observer name="change_text_field" instance="Magenest\Movie\Observer\SaveTextField" />
     </event>
 </config>
