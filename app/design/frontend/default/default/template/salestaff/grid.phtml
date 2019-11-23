@@ -1,0 +1,35 @@
+<!-- Page Title -->
+<div class="page-title">
+<h2><?php echo $this->__('Staff Grid') ?></h2>
+</div>
+<?php echo $this->getPagerHtml() ?> <!--Add Paging-->
+<table id="my-person-table" class="data-table">
+<colgroup>
+<col width="1">
+<col>
+<col width="1">
+<col width="1">
+<col>
+</colgroup>
+<thead>
+<tr class="first last">
+<th><?php echo $this->__('No.')?></th>
+<th><?php echo $this->__('Name')?></th>
+<th><?php echo $this->__('Birth Day')?></th>
+<th><?php echo $this->__('Sex')?></th>
+<th><?php echo $this->__('Status')?></th>
+</tr>
+</thead>
+<tbody>
+<?php foreach($this->getCollection() as $staff): ?>
+<tr>
+<td><?php echo $staff->getId();?></td>
+<td><?php echo $staff->getData('name')?></td>
+<td><?php echo Mage::helper('core')->formatDate($staff->getData('birthday'))?></td>
+<td><?php echo $this->getSexLabel($staff)?></td>
+<td><?php echo $this->getStatusLabel($staff)?></td>
+</tr>
+<?php endforeach ?>
+</tbody>
+</table>
+<script type="text/javascript">decorateTable('my-person-table')</script>

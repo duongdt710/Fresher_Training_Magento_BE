@@ -1,0 +1,12 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Backend:etc/menu.xsd">
+    <menu>
+    <add id="Jeff_Contacts::unique_identifier" 
+        resource="Jeff_Contacts::unique_identifier" 
+        title="My Contacts" 
+        action="jeff_contacts/index/index" 
+        module="Jeff_Contacts" 
+        sortOrder="999" 
+        dependsOnModule="Magento_Backend"/>
+    </menu>
+</config>
