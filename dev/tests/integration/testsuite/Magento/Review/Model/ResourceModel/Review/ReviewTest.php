@@ -26,7 +26,6 @@ class ReviewTest extends \PHPUnit\Framework\TestCase
      * @var \Magento\Review\Model\ResourceModel\Review\Collection
      */
     protected $reviewCollection;
-
     /**
      * @var \Magento\Framework\App\ResourceConnection
      */

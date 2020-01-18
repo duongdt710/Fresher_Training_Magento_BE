@@ -1,0 +1,179 @@
+<?php
+/**
+ * Created by PhpStorm.
+ * User: gialam
+ * Date: 21/03/2017
+ * Time: 09:00
+ */
+?>
+<?php
+/** @var $block  \Magenest\SuperEasySeo\Block\Adminhtml\Preview\Category\Grid */
+
+$type ='category';
+?>
+
+<div class="admin__data-grid-wrap admin__data-grid-wrap-static">
+    <table class="data-grid" id="table_category">
+        <thead>
+        <tr>
+            <th scope="col" class="col stt" style="text-align: center;"><?php /* @escapeNotVerified */ echo __('STT') ?></th>
+            <th scope="col" class="col id" style="text-align: center;"><?php /* @escapeNotVerified */ echo __('ID') ?></th>
+            <th scope="col" class="col name" style="text-align: center;"><?php /* @escapeNotVerified */ echo __('Name') ?></th>
+            <th scope="col" class="col url_key" style="text-align: center;"><?php /* @escapeNotVerified */ echo __('Url Key') ?></th>
+            <th scope="col" class="col meta_title" style="text-align: center;"><?php /* @escapeNotVerified */ echo __('Meta Title') ?></th>
+            <th scope="col" class="col length_title" style="text-align: center;"><?php /* @escapeNotVerified */ echo __('Length') ?></th>
+            <th scope="col" class="col meta_description" style="text-align: center;"><?php /* @escapeNotVerified */ echo __('Meta Description') ?></th>
+            <th scope="col" class="col length_description" style="text-align: center;"><?php /* @escapeNotVerified */ echo __('Length') ?></th>
+            <th scope="col" class="col actions">&nbsp;</th>
+        </tr>
+        </thead>
+        <tbody>
+        <?php
+        $_collection = $block->getCategory();
+        $i = 0;
+        /** @var \Magento\Catalog\Model\Category $_collection */
+        foreach ($_collection as $collection) : ?>
+            <tr>
+                <td data-th="<?php echo $block->escapeHtml(__('STT')) ?>" class="col stt"><?php /* @escapeNotVerified */ echo $i; ?></td>
+
+                <td data-th="<?php echo $block->escapeHtml(__('ID')) ?>" class="col id">
+                    <a href="<?php /* @escapeNotVerified */ echo $block->returnCategory($collection->getId()); ?>" target="_blank" class="action view">
+                        <span><?php /* @escapeNotVerified */ echo $collection->getId(); ?></span>
+                    </a>
+                </td>
+                <td data-th="<?php echo $block->escapeHtml(__('Name')) ?>" class="col name">
+                    <?php /* @escapeNotVerified */ echo $collection->getName();?>
+                </td>
+
+                <td data-th="<?php echo /* @escapeNotVerified */ $block->escapeHtml(__('Url Key')) ?>" class="col url_key">
+                    <span><?php echo $collection->getUrlKey(); ?></span>
+                </td>
+                <td data-th="<?php echo /* @escapeNotVerified */ $block->escapeHtml(__('Meta Title')) ?>" class="col meta_title">
+                    <span><?php echo $collection->getMetaTitle(); ?></span>
+                </td>
+                <td data-th="<?php echo /* @escapeNotVerified */ $block->escapeHtml(__('Length')) ?>" class="col length_title">
+                    <span <?php if (strlen($collection->getMetaTitle()) > 55) {
+                        echo __('style="color:red"');
+}?>>
+                        <?php echo strlen($collection->getMetaTitle()); ?>
+                    </span>
+                </td>
+                <td data-th="<?php echo /* @escapeNotVerified */ $block->escapeHtml(__('Meta Description')) ?>" class="col meta_description">
+                    <span><?php echo $collection->getMetaDescription();?></span>
+                </td>
+                <td data-th="<?php echo /* @escapeNotVerified */ $block->escapeHtml(__('Length')) ?>" class="col length_description">
+                    <span <?php if (strlen($collection->getMetaDescription()) > 155) {
+                        echo __('style="color:red"');
+}?>>
+                        <?php echo strlen($collection->getMetaDescription());?>
+                    </span>
+                </td>
+                <td data-th="<?php echo /* @escapeNotVerified */ $block->escapeHtml(__('Actions')) ?>" class="col actions">
+                    <button class="preview_category" id="<?php echo $collection->getId(); ?>">
+                        <span><?php /* @escapeNotVerified */ echo __('Preview') ?></span>
+                    </button>
+                </td>
+            </tr>
+
+        <?php $i++;
+        endforeach; ?>
+        </tbody>
+    </table>
+</div>
+<?php echo $block->getToolbarContent(); ?>
+<script>
+    require([
+            'jquery',
+            'Magento_Ui/js/modal/modal'
+        ],
+        function ($, modal) {
+            var options = {
+                type: 'popup',
+                responsive: true,
+                innerScroll: true,
+                title: 'Preview Snippet',
+                buttons: [{
+                    text: $.mage.__('Close'),
+                    class: '',
+                    click: function () {
+                        this.closeModal();
+                    }
+                }]
+            };
+            var popup = modal(options, $('#popup-modal'));
+            var type = '<?php echo $type ?>';
+            if (type == 'category') {
+                $(".rating").remove();
+            }
+            $(".icon-close").click(function () {
+                $(".seo__toolbar-content").hide();
+                $(".close").hide();
+            } );
+            $(".show_template").click(function () {
+                $(".seo__toolbar-content").show();
+                $(".close").show();
+            } );
+
+            $("button").click(function(){
+                var id = $(this).attr('id');
+                $(".show_snippet").remove();
+                $.ajax({
+                    type: "POST",
+                    url: '<?php echo $block->getPreviewUrl()?>?isAjax=true',
+                    data: {form_key: '<?php echo $block->getFormKey() ?>', id: Number(id), type:type},
+                    success: function (result) {
+                        var dataPreview = result;
+                        $(".seo_canoical_url").text(dataPreview['url_key']);
+                        $(".seo_header").text(dataPreview['name']);
+                        $(".seo_meta_title").text(dataPreview['meta_title']);
+                        $(".seo_length_meta_title").text(dataPreview['size']);
+                        $(".seo_meta_description").text(dataPreview['meta_description']);
+                    },
+                    error: function (e) {
+                        console.log(e);
+                    },
+                    timeout: 10000
+                });
+
+                var buttonShow = " ";
+                buttonShow += '<input type="button" class="show_snippet" id="'+id+'" title="Show Snippet" value="Show Snippet">';
+                $(".seo__toolbar-content").append(buttonShow);
+                showSnippet(id);
+            });
+
+            function showSnippet(productId) {
+                $(".show_snippet").click(function () {
+
+                    $(".meta_title").remove();
+
+                    $.ajax({
+                        type: "POST",
+                        url: '<?php echo $block->getPreviewUrl()?>?isAjax=true',
+                        data: {form_key: '<?php echo $block->getFormKey() ?>', id: Number(productId), type:type},
+                        success: function (result) {
+                            var data = result;
+                            $(".link").text(data['url_key']);
+                            $(".content").text(data['meta_description']);
+                            var metaRule = '<a class="meta_title" href="'+data['url_key']+'" target="_blank">'+data['meta_title']+'</a>';
+                            $(".snippet_meta_title").append(metaRule);
+                        },
+                        error: function (e) {
+                            console.log(e);
+                        },
+                        timeout: 10000
+                    });
+
+                    var content = $(".content-snippet").html();
+                    $('#popup-modal').html(content).modal('openModal');
+                })
+            }
+        });
+</script>
+<style>
+    th {
+        display: table-cell;
+        vertical-align: inherit;
+        font-weight: bold;
+        text-align: center;
+    }
+</style>

@@ -1,0 +1,141 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Copyright © 2015 Magenest. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../../../../Magento/Backend/etc/menu.xsd">
+    <menu>
+        <add
+            id="Magenest_SuperEasySeo::super_easy_seo"
+            title="Super Easy Seo"
+            module="Magenest_SuperEasySeo"
+            sortOrder="40"
+            resource="Magenest_SuperEasySeo::super_easy_seo"
+        />
+        <add
+            id="Magenest_SuperEasySeo::config_super_easy_seo"
+            title="Crawling and Indexation"
+            module="Magenest_SuperEasySeo"
+            sortOrder="0"
+            parent="Magenest_SuperEasySeo::super_easy_seo"
+            action="adminhtml/system_config/edit/section/super_easy_seo"
+            resource="Magenest_SuperEasySeo::config_super_easy_seo"
+        />
+
+        <add
+            id="Magenest_SuperEasySeo::templates"
+            title="Mass SEO Content Generator"
+            module="Magenest_SuperEasySeo"
+            sortOrder="10"
+            resource="Magenest_SuperEasySeo::templates"
+            parent="Magenest_SuperEasySeo::super_easy_seo"
+        />
+        <add
+            id="Magenest_SuperEasySeo::product_template"
+            title="SEO Product Template"
+            module="Magenest_SuperEasySeo"
+            sortOrder="10"
+            action="seo/product"
+            resource="Magenest_SuperEasySeo::product_template"
+            parent="Magenest_SuperEasySeo::templates"
+        />
+        <add
+            id="Magenest_SuperEasySeo::category_template"
+            title="SEO Category Template"
+            module="Magenest_SuperEasySeo"
+            sortOrder="20"
+            action="seo/category"
+            resource="Magenest_SuperEasySeo::category_template"
+            parent="Magenest_SuperEasySeo::templates"
+        />
+        <add
+            id="Magenest_SuperEasySeo::onsite"
+            title="On-site experience"
+            module="Magenest_SuperEasySeo"
+            sortOrder="15"
+            resource="Magenest_SuperEasySeo::onsite"
+            parent="Magenest_SuperEasySeo::super_easy_seo"
+        />
+        <add
+            id="Magenest_SuperEasySeo::autolink"
+            title="Cross Linking"
+            module="Magenest_SuperEasySeo"
+            sortOrder="30"
+            action="seo/autolink"
+            resource="Magenest_SuperEasySeo::autolink"
+            parent="Magenest_SuperEasySeo::onsite"
+        />
+        <add
+            id="Magenest_SuperEasySeo::redirect"
+            title="Redirect Management"
+            module="Magenest_SuperEasySeo"
+            sortOrder="40"
+            action="seo/redirect"
+            resource="Magenest_SuperEasySeo::redirect"
+            parent="Magenest_SuperEasySeo::onsite"
+        />
+        <add
+            id="Magenest_SuperEasySeo::optimizer_form"
+            title="Image Optimizer"
+            module="Magenest_SuperEasySeo"
+            sortOrder="50"
+            action="seo/optimizer"
+            resource="Magenest_SuperEasySeo::optimizer_form"
+            parent="Magenest_SuperEasySeo::onsite"
+        />
+        <add
+            id="Magenest_SuperEasySeo::preview"
+            title="SEO Quality Analysis"
+            module="Magenest_SuperEasySeo"
+            sortOrder="20"
+            resource="Magenest_SuperEasySeo::preview"
+            parent="Magenest_SuperEasySeo::super_easy_seo"
+        />
+        <add
+             id="Magenest_SuperEasySeo::preview_seo"
+             title="Preview Product"
+             module="Magenest_SuperEasySeo"
+             sortOrder="10"
+             action="seo/preview"
+             resource="Magenest_SuperEasySeo::preview_seo"
+             parent="Magenest_SuperEasySeo::preview"
+        />
+        <add
+            id="Magenest_SuperEasySeo::preview_category"
+            title="Preview Category"
+            module="Magenest_SuperEasySeo"
+            sortOrder="20"
+            action="seo/preview_category"
+            resource="Magenest_SuperEasySeo::preview_category"
+            parent="Magenest_SuperEasySeo::preview"
+        />
+        <add
+            id="Magenest_SuperEasySeo::preview_product"
+            title="Product Preview"
+            module="Magenest_SuperEasySeo"
+            sortOrder="21"
+            action="seo/previewproduct"
+            resource="Magenest_SuperEasySeo::preview_product"
+            parent="Magenest_SuperEasySeo::preview"
+        />
+        <add
+            id="Magenest_SuperEasySeo::brand"
+            title="Add Brand"
+            module="Magenest_SuperEasySeo"
+            sortOrder="21"
+            resource="Magenest_SuperEasySeo::brand"
+            parent="Magenest_SuperEasySeo::super_easy_seo"
+        />
+        <add
+            id="Magenest_SuperEasySeo::show_brand"
+            title="Show Brand"
+            module="Magenest_SuperEasySeo"
+            sortOrder="25"
+            action="seo/brand"
+            resource="Magenest_SuperEasySeo::show_brand"
+            parent="Magenest_SuperEasySeo::brand"
+        />
+    </menu>
+</config>

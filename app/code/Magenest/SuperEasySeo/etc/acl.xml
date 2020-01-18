@@ -1,0 +1,39 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Copyright © 2017 Magenest. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../../../../../lib/internal/Magento/Framework/Acl/etc/acl.xsd">
+    <acl>
+        <resources>
+            <resource id="Magento_Backend::admin">
+                <resource id="Magenest_SuperEasySeo::super_easy_seo" title="Super Easy Seo" sortOrder="40">
+                    <resource id="Magenest_SuperEasySeo::config_super_easy_seo" title="Crawling and Indexation" sortOrder="10"/>
+                    <resource id="Magenest_SuperEasySeo::templates" title="Mass SEO Content Generator" sortOrder="20">
+                        <resource id="Magenest_SuperEasySeo::product_template" title="SEO Product Template" sortOrder="10"/>
+                        <resource id="Magenest_SuperEasySeo::category_template" title="SEO Category Template" sortOrder="20"/>
+                    </resource>
+                    <resource id="Magenest_SuperEasySeo::onsite" title="On-site experience" sortOrder="30">
+                        <resource id="Magenest_SuperEasySeo::autolink" title="Cross Linking" sortOrder="10"/>
+                        <resource id="Magenest_SuperEasySeo::redirect" title="Redirect Management" sortOrder="20"/>
+                        <resource id="Magenest_SuperEasySeo::optimizer_form" title="Image Optimizer" sortOrder="30"/>
+                    </resource>
+                    <resource id="Magenest_SuperEasySeo::preview" title="SEO Quality Analysis" sortOrder="40">
+                        <resource id="Magenest_SuperEasySeo::preview_seo" title="Preview Product" sortOrder="10"/>
+                        <resource id="Magenest_SuperEasySeo::preview_category" title="Preview Category" sortOrder="20"/>
+                        <resource id="Magenest_SuperEasySeo::preview_product" title="Product Preview" sortOrder="21"/>
+                    </resource>
+                </resource>
+                <resource id="Magento_Backend::stores">
+                    <resource id="Magento_Backend::stores_settings">
+                        <resource id="Magento_Config::config">
+                            <resource id="Magenest_SuperEasySeo::config_supereasyseo" title="Super Easy Seo"/>
+                        </resource>
+                    </resource>
+                </resource>
+            </resource>
+        </resources>
+    </acl>
+</config>

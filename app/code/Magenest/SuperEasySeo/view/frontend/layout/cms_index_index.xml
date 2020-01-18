@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Copyright © 2017 Magenest. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+-->
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <body>
+        <referenceBlock name="magenest_supereasyseo_block_richsnippet_social_network_page_default" remove="true"/>
+        <referenceBlock name="head.additional">
+            <block class="Magenest\SuperEasySeo\Block\RichSnippet\SocialNetwork\Page\Home" name="magenest_supereasyseo_block_richsnippet_social_network_page_home" />
+            <block class="Magenest\SuperEasySeo\Block\RichSnippet\Json\Website" name="magenest_supereasyseo_block_richsnippet_json_website" />
+            <block class="Magenest\SuperEasySeo\Block\RichSnippet\Json\Seller" name="magenest_supereasyseo_block_richsnippet_json_seller" />
+            <block class="Magenest\SuperEasySeo\Block\RichSnippet\Json\Breadcrumbs\Home" name="magenest_supereasyseo_block_richsnippet_json_breadcrumbs_home" />
+            <block class="Magenest\SuperEasySeo\Block\CanonicalTag\Website" name="magenest_supereasyseo_block_canonical_tag_website" />
+        </referenceBlock>
+    </body>
+</page>

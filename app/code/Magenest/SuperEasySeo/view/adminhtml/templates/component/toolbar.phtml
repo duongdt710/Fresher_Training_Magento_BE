@@ -1,0 +1,82 @@
+<div class="content-snippet" hidden>
+    <div class="box-gg">
+        <div class = 'snippet_meta_title'>
+        </div>
+        <div>
+            <div>
+                <span class="link"></span>
+                <span class="sort-desc"></span>
+            </div>
+            <div class="rating">
+                <div class="star-box">
+                    <span class="star-background">
+                        <i class="fa fa-star" aria-hidden="true"></i><i class="fa fa-star" aria-hidden="true"></i><i class="fa fa-star" aria-hidden="true"></i><i class="fa fa-star" aria-hidden="true"></i><i class="fa fa-star" aria-hidden="true"></i>
+                    </span>
+                    <span class="star">
+                        <i class="fa fa-star" aria-hidden="true"></i><i class="fa fa-star" aria-hidden="true"></i><i class="fa fa-star" aria-hidden="true"></i><i class="fa fa-star" aria-hidden="true"></i><i class="fa fa-star" aria-hidden="true"></i>
+                    </span>
+                </div>
+                <span class="text" id="preview">
+                    <span class="rating"></span>
+                    <span class="reviews-count"></span>
+                    <span class="price"></span>
+                </span>
+            </div>
+            <span class="content"></span>
+        </div>
+    </div>
+</div>
+
+<div id="popup-modal">
+</div>
+<div class="seo__toolbar " data-bind="scope: 'toolbar'">
+    <div class="seo__toolbar-header">
+        <span class="show_template"><?php echo __('SEO preview on frontend') ?></span>
+        <div class="close">
+            <span class="icon-close"><?php echo __('x') ?></span>
+        </div>
+    </div>
+    <div class="seo__toolbar-content">
+        <ul>
+            <li class="status-success">
+                <strong class="seo__toolbar-label"><?php echo __('Canonical URL:')?></strong>
+                <span class="seo_canoical_url" data-bind="text: canonicalUrl"></span>
+            </li>
+            <li class="status-success">
+                <strong class="seo__toolbar-label"><?php echo __('H1 Header:')?></strong>
+                <span class="seo_header" data-bind="text: seoHeader"></span>
+                <p class="status-success-message"><?php echo __('One H1 tag')?></p>
+            </li>
+            <li class="status-warning">
+                <strong class="seo__toolbar-label"><?php echo __('Meta Title:')?></strong>
+                <span class="seo_meta_title" data-bind="text: metaTitle"></span>
+                <p class="status-warning-message">
+                    <span><?php echo __('Length = 0')?></span>
+                    <span class="seo_length_meta_title" data-bind="text: LengthMetaTitle"></span>
+                    <span><?php echo __('. Recommended length up to 55 characters')?></span>
+                </p>
+            </li>
+            <li class="status-success">
+                <strong class="seo__toolbar-label"><?php echo __('Meta Description:')?></strong>
+                <span class="seo_meta_description" data-bind="text: metaDescription"></span>
+            </li>
+            <li class="btn btn-success">
+              <button class="seo_show_snippet">Show snippet</button>
+                <span class="show_snippet" data-bind="text: showSnippet"></span>
+            </li>
+        </ul>
+    </div>
+</div>
+<script type="text/x-magento-init">
+    {
+        "*": {
+            "Magento_Ui/js/core/app": {
+                "components": {
+                    "toolbar": {
+                        "component": "Magenest_SuperEasySeo/js/preview/toolbar"
+                    }
+                }
+            }
+        }
+    }
+</script>

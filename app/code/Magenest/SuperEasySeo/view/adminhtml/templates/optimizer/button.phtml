@@ -1,0 +1,24 @@
+<?php
+/** @var $block  \Magenest\SuperEasySeo\Block\Adminhtml\Optimizer\Edit\Tab\Optimize */
+?>
+<fieldset class="fieldset admin__fieldset " id="page_base_fieldse_optimize_image">
+    <legend class="admin__legend legend">
+        <span><?php echo __('Optimize Images')?></span>
+    </legend><br>
+    <div class="admin__field field field-scan  with-note" >
+        <label class="label admin__field-label"><span><?php echo __('Scan Images') ?></span></label>
+        <div class="admin__field-control control">
+            <button id="scan_image" title="Start Scan Images" onclick="location.href='<?php echo $block->getImages() ?>'"
+                    type="button" class="action-default scalable">
+                <span><?php echo __('Start Scan Images') ?></span>
+            </button>
+    </div><br><br><br>
+    <div class="admin__field field field-optimize  with-note" >
+        <label class="label admin__field-label"><span><?php echo __('Optimization Process') ?></span></label>
+        <div class="admin__field-control control">
+            <button id="optimization_image" title="Start Optimization Process" onclick="location.href='<?php echo $block->getOptimizeImage() ?>'"
+                    type="button" class="action-default scalable">
+                <span><?php echo __('Start Optimization Process') ?></span>
+            </button>
+    </div>
+</fieldset>

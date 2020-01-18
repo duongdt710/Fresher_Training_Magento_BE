@@ -1,0 +1,33 @@
+<?php /** @var $block  \Magenest\SuperEasySeo\Block\Adminhtml\Category\Edit\Js */ ?>
+<script>
+    require([
+        "jquery"
+    ], function ($) {
+
+        var checkEdit = <?php echo $block->checkEdit(); ?>;
+        if (checkEdit == 1) {
+            $("#page_name_template").attr('readonly', true);
+            $("#page_store").attr('readonly', true);
+        }
+        var assignType = '<?php echo $block->getAssignType() ?>';
+        var tabCategory = document.getElementById("page_base_fieldset_category");
+        $(tabCategory).hide();
+        if (assignType > 0) {
+            if (assignType == 1) {
+                $(tabCategory).hide();
+            }
+            if (assignType == 2) {
+                $(tabCategory).show();
+            }
+        }
+        $('.field-assign_type input').on('change', function() {
+            var valueAssign = $('input[name=assign_type]:checked', '.field-assign_type').val();
+            if (valueAssign == 1) {
+                $(tabCategory).hide();
+            }
+            if (valueAssign == 2) {
+                $(tabCategory).show();
+            }
+        });
+    });
+</script>

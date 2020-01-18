@@ -1,0 +1,65 @@
+.keyword-content{
+	padding: 15px;
+	color: #333;
+}
+.keyword-content .keyword-box{
+	padding: 15px 20px;
+	margin-bottom: 20px;
+	box-shadow: 0 1px 1px 1px #ddd;
+}
+.keyword-content .icon.icon-question{
+	float: right;
+}
+.keyword-content .icon.icon-question > i{
+	color: #777;
+}
+.keyword-content .keyword-box .icon.icon-key > i,
+.keyword-content .analysis-box .icon.icon-list > i{
+	margin-right: 8px;
+	color: #555;
+}
+.keyword-content > div > .icon{
+	margin-bottom: 25px;
+}
+.keyword-content .key-input{
+	display: block;
+	width: calc(100% - 10px);
+	border: 1px solid #ddd;
+	height: 25px;
+}
+.keyword-content .analysis-box{
+	padding: 15px 20px;
+	margin-bottom: 20px;
+	box-shadow: 0 1px 1px 1px #ddd;
+}
+.keyword-content .analysis-list{
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    clear: both;
+}
+.keyword-content .analysis-list > li{
+	margin-bottom: 8px;
+    padding-left: 22px;
+    position: relative;
+}
+.keyword-content .analysis-list > li:before{
+	content:" ";
+	width: 12px;
+	height: 12px;
+	border-radius: 50%;
+	display: inline-block;
+	margin-right: 10px;
+	position: absolute;
+	left: 0;
+	top: 2px;
+}
+.style-red:before{
+	background-color: #dc3232;
+}
+.style-orange:before{
+	background-color: #ee7c1b;
+}
+.style-green:before{
+	background-color: #7ad03a;
+}

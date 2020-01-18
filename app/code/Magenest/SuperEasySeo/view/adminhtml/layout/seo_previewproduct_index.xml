@@ -1,0 +1,25 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Copyright © 2020 Magenest. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+-->
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <head>
+        <css src="Magenest_SuperEasySeo::css/preview/style.css" />
+        <css src="Magenest_SuperEasySeo::css/preview/font-awesome.min.css" />
+    </head>
+    <body>
+        <referenceContainer name="content">
+            <block class="Magenest\SuperEasySeo\Block\Adminhtml\PreviewProduct"
+                   name="adminhtml_block_seo_preview"
+                   template="Magenest_SuperEasySeo::component/toolbar.phtml"
+            />
+            <uiComponent name="seo_previewproduct_listing"/>
+        </referenceContainer>
+        <referenceContainer name="js">
+            <block class="Magenest\SuperEasySeo\Block\Adminhtml\Product\Edit\Js" template="product/js.phtml"/>
+        </referenceContainer>
+    </body>
+</page>

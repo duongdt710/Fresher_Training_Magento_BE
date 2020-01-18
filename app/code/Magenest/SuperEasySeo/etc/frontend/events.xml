@@ -1,0 +1,12 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:Event/etc/events.xsd">
+    <event name="controller_action_predispatch_cms_noroute_index">
+        <observer name="magenest_event_after_select_url" instance="Magenest\SuperEasySeo\Observer\Redirect\Action" />
+    </event>
+    <event name="core_register_urlrewrite">
+        <observer name="sitemap" instance="\Magenest\SuperEasySeo\Observer\RegisterUrlRewriteObserver"/>
+    </event>
+    <event name="layout_load_before">
+        <observer name="magenest_seo_robot_layout_load" instance="Magenest\SuperEasySeo\Observer\Layout\Robot"/>
+    </event>
+</config>

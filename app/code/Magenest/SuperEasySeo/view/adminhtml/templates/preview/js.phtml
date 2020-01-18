@@ -1,0 +1,99 @@
+<?php /** @var $block  \Magenest\SuperEasySeo\Block\Adminhtml\Preview\Js */ ?>
+<?php
+$type = 'product';
+?>
+<?php echo $block->getToolbarContent(); ?>
+<script>
+    require([
+        'jquery',
+        'Magento_Ui/js/modal/modal'
+    ],
+        function ($, modal) {
+        var options = {
+            type: 'popup',
+            responsive: true,
+            innerScroll: true,
+            title: 'Preview Snippet',
+            buttons: [{
+                text: $.mage.__('Close'),
+                class: '',
+                click: function () {
+                    this.closeModal();
+                }
+            }]
+        };
+
+        var popup = modal(options, $('#popup-modal'));
+
+        var type = '<?php echo $type ?>';
+        $(".icon-close").click(function () {
+            $(".seo__toolbar-content").hide();
+            $(".close").hide();
+        } );
+        $(".show_template").click(function () {
+            $(".seo__toolbar-content").show();
+            $(".close").show();
+        } );
+
+        $("button").click(function(){
+            var id = $(this).parent().parent().find(".col-entity_id").text();
+            $(".show_snippet").remove();
+            $.ajax({
+                type: "POST",
+                url: '<?php echo $block->getPreviewUrl()?>?isAjax=true',
+                data: {form_key: '<?php echo $block->getFormKey() ?>', id: Number(id), type:type},
+                success: function (result) {
+                    var dataPreview = result;
+                    $(".seo_canoical_url").text(dataPreview['url_key']);
+                    $(".seo_header").text(dataPreview['name']);
+                    $(".seo_meta_title").text(dataPreview['meta_title']);
+                    $(".seo_length_meta_title").text(dataPreview['size']);
+                    $(".seo_meta_description").text(dataPreview['meta_description']);
+                    $(".content-snippet .text .price").text('-'+' ' + dataPreview['price'] + '$');
+                    $(".content-snippet .text .rating").text('Rating: '+ dataPreview['rating'] + '%');
+                    $(".content-snippet .star-box .star").css("width", dataPreview['rating'] + '%');
+                    $(".content-snippet .text .reviews-count").text(' - ' + dataPreview['reviewsCount'] +' '+'review');
+                },
+                error: function (e) {
+                    console.log(e);
+                },
+                timeout: 10000
+            });
+
+            var buttonShow = " ";
+            buttonShow += '<input type="button" class="show_snippet" id="'+id+'" title="Show Snippet" value="Show Snippet">';
+            $(".seo__toolbar-content").append(buttonShow);
+            showSnippet(id);
+        });
+
+        function showSnippet(productId) {
+            $(".show_snippet").click(function () {
+
+                $(".meta_title").remove();
+
+                $.ajax({
+                    type: "POST",
+                    url: '<?php echo $block->getPreviewUrl()?>?isAjax=true',
+                    data: {form_key: '<?php echo $block->getFormKey() ?>', id: Number(productId), type:type},
+                    success: function (result) {
+                        var data = result;
+                        $(".link").text(data['url_key']);
+                        $(".content").text(data['meta_description']);
+                        var metaRule = '<a class="meta_title" href="'+data['url_key']+'" target="_blank">'+data['meta_title']+'</a>';
+                        $(".snippet_meta_title").append(metaRule);
+                    },
+                    error: function (e) {
+                        console.log(e);
+                    },
+                    always: function(){
+
+                    },
+                    timeout: 10000
+                });
+
+                var content = $(".content-snippet").html();
+                $('#popup-modal').html(content).modal('openModal');
+            })
+        }
+    });
+</script>

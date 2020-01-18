@@ -1,0 +1,62 @@
+<?php /** @var $block  \Magenest\SuperEasySeo\Block\Adminhtml\Product\Edit\Js */ ?>
+<?php
+$_data = $block->getApplyProduct();
+?>
+<script>
+    require([
+        "jquery"
+    ], function ($) {
+        var useProduct = <?php echo $_data; ?>;
+        if (useProduct.length > 0) {
+            for (var i = 0; i < useProduct.length; i++) {
+                $('#id_'+useProduct[i]).attr('checked', true); // Checks it
+            }
+        }
+        var checkEdit = <?php echo $block->checkEdit(); ?>;
+        if (checkEdit == 1) {
+            $("#page_name_template").attr('readonly', true);
+            $("#page_store").attr('readonly', true);
+            $("#page_apply_category").attr('readonly', true);
+        }
+        var assignType = '<?php echo $block->getAssignType() ?>';
+        var tabProduct = document.getElementById("page_base_fieldset_product");
+        var tabAttribute = document.getElementById("page_base_fieldset_attribute");
+        var applyProduct = document.getElementById("page_apply_product");
+        $(tabProduct).hide();
+        $(tabAttribute).hide();
+        if (assignType > 0) {
+            if (assignType == 2) {
+                $(tabProduct).hide();
+                $(tabAttribute).show();
+            }
+            if (assignType == 3) {
+                $(tabProduct).show();
+                $(tabAttribute).hide();
+            }
+        }
+        $('.field-assign_type input').on('change', function() {
+            var valueAssign = $('input[name=assign_type]:checked', '.field-assign_type').val();
+            if (valueAssign == 1) {
+                $(tabAttribute).hide();
+                $(tabProduct).hide();
+            }
+            if (valueAssign == 2) {
+                $(tabAttribute).show();
+                $(tabProduct).hide();
+            }
+            if (valueAssign == 3) {
+                $(tabAttribute).hide();
+                $(tabProduct).show();
+            }
+        });
+
+        $(".checkbox").click(function(){
+            var myArray = [];
+            $.each($('input[type="checkbox"]:checked'), function() {
+                return  myArray.push($(this).val());
+            });
+            applyProduct.value = myArray;
+        });
+
+    });
+</script>

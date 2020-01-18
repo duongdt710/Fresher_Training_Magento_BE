@@ -1,0 +1,61 @@
+<?php
+/**
+ * Created by PhpStorm.
+ * User: lamken
+ * Date: 6/8/17
+ * Time: 2:14 PM
+ */
+?>
+<?php /** @var $block  \Magenest\SuperEasySeo\Block\Adminhtml\Product\Content\Analysis */ ?>
+<div class="keyword-content">
+    <div class="keyword-box">
+        <span class="icon icon-key"><i class="fa fa-key" aria-hidden="true"></i><?php echo __('Focus keyword') ?></span>
+        <span class="icon icon-question"><i class="fa fa-question-circle" aria-hidden="true"></i></span>
+        <input type="text" name="keyword" class="seo_keyword_focus key-input" id="seo_keyword_focus" placeholder="Insert your keyword to see content analysis!">
+    </div>
+    <div class="analysis-box">
+        <span class="icon icon-list"><i class="fa fa-list-ul" aria-hidden="true"></i><?php echo __('Analysis') ?></span>
+        <span class="icon icon-question"><i class="fa fa-question-circle" aria-hidden="true"></i></span>
+        <div  class="info_analysis">
+        </div>
+    </div>
+</div>
+<script>
+    require([
+            'jquery'
+        ],
+        function ($) {
+
+            var timeout = null;
+            $('#seo_keyword_focus').on('keyup', function () {
+                var newVal = this;
+                if (timeout !== null) {
+                    clearTimeout(timeout);
+                }
+                timeout = setTimeout(function () {
+                    var inputText = $(newVal).val();
+                    if (inputText.length > 0) {
+                        $(".info_analysis").empty();
+                        sendTextPut(inputText);
+                    }
+                }, 1000);
+            });
+
+            function sendTextPut(inputText) {
+                $.ajax({
+                    type: "POST",
+                    url: '<?php echo $block->getContentAnalysis()?>?isAjax=true',
+                    data: {form_key: '<?php echo $block->getFormKey() ?>', requestText: inputText},
+                    success: function (response) {
+                        var results = JSON.parse(response);
+                        $(".info_analysis").append(results);
+                    },
+                    error: function (e) {
+                        console.log(e);
+                    },
+                    timeout: 10000
+                });
+            }
+        });
+</script>
+

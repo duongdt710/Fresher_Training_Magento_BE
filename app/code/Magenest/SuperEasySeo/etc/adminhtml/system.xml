@@ -1,0 +1,546 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Copyright © 2017 Magenest. All rights reserved.
+ * See LICENSE.txt for license details.
+ */
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Config:etc/system_file.xsd">
+    <system>
+        <tab id="magenest" translate="label" sortOrder="200">
+            <label>Magenest</label>
+        </tab>
+        <section id="super_easy_seo" translate="label" type="text" sortOrder="100" showInDefault="1" showInWebsite="1"
+                 showInStore="1">
+            <label>Super Easy Seo</label>
+            <tab>magenest</tab>
+            <resource>Magenest_SuperEasySeo::config_supereasyseo</resource>
+            <group id="frontend" showInDefault="1" showInWebsite="1" showInStore="1" sortOrder="10">
+                <label>Sitemap Settings</label>
+                <field id="url_rewrite" translate="label" type="text" sortOrder="10" showInDefault="1" showInWebsite="1"
+                       showInStore="1">
+                    <label>URL Rewrite</label>
+                </field>
+                <field id="meta_title" translate="label" type="text" sortOrder="20" showInDefault="1" showInWebsite="1"
+                       showInStore="1">
+                    <label>Meta Title</label>
+                </field>
+                <field id="meta_keywords" translate="label" type="textarea" sortOrder="30" showInDefault="1"
+                       showInWebsite="1" showInStore="1">
+                    <label>Meta Keywords</label>
+                </field>
+                <field id="meta_description" translate="label" type="textarea" sortOrder="40" showInDefault="1"
+                       showInWebsite="1" showInStore="1">
+                    <label>Meta Description</label>
+                </field>
+                <field id="sitemap_h1" translate="label" type="text" sortOrder="50" showInDefault="1" showInWebsite="1"
+                       showInStore="1">
+                    <label>Title footer link</label>
+                </field>
+                <field id="show_products" translate="label" type="select" sortOrder="60" showInDefault="1"
+                       showInWebsite="1" showInStore="1">
+                    <label>Show with Products</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+                <field id="show_cms_pages" translate="label" type="select" sortOrder="70" showInDefault="1"
+                       showInWebsite="1" showInStore="1">
+                    <label>Show with CMS Pages</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+                <field id="ignore_cms_pages" translate="label" type="multiselect" sortOrder="80" showInDefault="1"
+                       showInWebsite="1" showInStore="1">
+                    <label>Ignore CMS Pages</label>
+                    <source_model>Magenest\SuperEasySeo\Model\Config\Source\Pages</source_model>
+                </field>
+                <field id="show_stores" translate="label" type="select" sortOrder="90" showInDefault="1"
+                       showInWebsite="1" showInStore="1">
+                    <label>Show with Stores</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+                <field id="exclude_links" translate="label" type="textarea" sortOrder="110" showInDefault="1"
+                       showInWebsite="1" showInStore="1">
+                    <label>Exclude by pattern</label>
+                </field>
+                <field id="links_limit" translate="label" type="text" sortOrder="120" showInDefault="1"
+                       showInWebsite="0" showInStore="0">
+                    <label>Limit links/page</label>
+                </field>
+            </group>
+            <group id="richsnippet" translate="label" type="text" sortOrder="20" showInDefault="1" showInWebsite="1"
+                   showInStore="1">
+                <label>Rich Snippet Setting</label>
+                <group id="product" translate="label" type="text" sortOrder="10" showInDefault="1" showInWebsite="1"
+                       showInStore="1">
+                    <label>Product</label>
+                    <field id="enabled_snippet" translate="label" type="select" sortOrder="10" showInDefault="1"
+                           showInWebsite="1" showInStore="1">
+                        <label>Enable Rich Snippets</label>
+                        <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                    </field>
+                    <field id="enabled_graph" translate="label" type="select" sortOrder="20" showInDefault="1"
+                           showInWebsite="1" showInStore="1">
+                        <label>Enable Open Graph</label>
+                        <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                    </field>
+                    <field id="enabled_tw" translate="label comment" type="select" sortOrder="25" showInDefault="1"
+                           showInWebsite="1" showInStore="1">
+                        <label>Enable In Twitter Cards</label>
+                        <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                        <comment>
+                            <![CDATA[To enable the feature, make sure you enter Twitter Username in the Common section.]]></comment>
+                    </field>
+                    <field id="rating" translate="label" type="text" sortOrder="30" showInDefault="1" showInWebsite="1"
+                           showInStore="1">
+                        <label>Best Rating</label>
+                        <validate>validate-number validate-greater-than-zero</validate>
+                    </field>
+                    <field id="brand" translate="label" type="select" sortOrder="35" showInDefault="1" showInWebsite="1"
+                           showInStore="1">
+                        <label>Show Brand</label>
+                        <source_model>Magenest\SuperEasySeo\Model\Config\Source\Attributes</source_model>
+                    </field>
+                    <field id="show_review" translate="label" type="select" sortOrder="75" showInWebsite="1"
+                           showInDefault="1" showInStore="1">
+                        <label>Show Review</label>
+                        <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                    </field>
+                    <field id="description_code" translate="label" type="select" sortOrder="40" showInDefault="1"
+                           showInWebsite="1" showInStore="1">
+                        <label>Description Attribute Code</label>
+                        <source_model>Magenest\SuperEasySeo\Model\Config\Source\Attributes</source_model>
+                    </field>
+                    <field id="enabled_sku" translate="label" type="select" sortOrder="50" showInDefault="1"
+                           showInWebsite="1" showInStore="1">
+                        <label>Attach SKU</label>
+                        <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                    </field>
+                    <field id="sku_code" translate="label" type="select" sortOrder="60" showInDefault="1"
+                           showInWebsite="1" showInStore="1">
+                        <label>SKU Attribute Code</label>
+                        <source_model>Magenest\SuperEasySeo\Model\Config\Source\Attributes</source_model>
+                        <depends>
+                            <field id="enabled_sku">1</field>
+                        </depends>
+                    </field>
+                    <field id="enabled_category" translate="label" type="select" sortOrder="70" showInDefault="1"
+                           showInWebsite="1" showInStore="1">
+                        <label>Attach Category</label>
+                        <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                    </field>
+                    <field id="category_deepest" translate="label" type="select" sortOrder="80" showInDefault="1"
+                           showInWebsite="1" showInStore="1">
+                        <label>Use Deepest Category</label>
+                        <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                        <comment>
+                            <![CDATA[Set 'Yes', if products are assigned to multiple categories and sub-categories in the same chain.]]></comment>
+                        <depends>
+                            <field id="enabled_category">1</field>
+                        </depends>
+                    </field>
+                    <field id="enabled_color" translate="label" type="select" sortOrder="90" showInDefault="1"
+                           showInWebsite="1" showInStore="1">
+                        <label>Attach Color</label>
+                        <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                    </field>
+                    <field id="color_code" translate="label" type="select" sortOrder="100" showInDefault="1"
+                           showInWebsite="1" showInStore="1">
+                        <label>Color Attribute Code</label>
+                        <source_model>Magenest\SuperEasySeo\Model\Config\Source\Attributes</source_model>
+                        <depends>
+                            <field id="enabled_color">1</field>
+                        </depends>
+                    </field>
+                    <field id="enabled_manufacturer" translate="label" type="select" sortOrder="110" showInDefault="1"
+                           showInWebsite="1" showInStore="1">
+                        <label>Attach Manufacturer</label>
+                        <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                    </field>
+                    <field id="manufacturer_code" translate="label" type="select" sortOrder="120" showInDefault="1"
+                           showInWebsite="1" showInStore="1">
+                        <label>Manufacturer Attribute Code</label>
+                        <source_model>Magenest\SuperEasySeo\Model\Config\Source\Attributes</source_model>
+                        <depends>
+                            <field id="enabled_manufacturer">1</field>
+                        </depends>
+                    </field>
+                    <field id="enabled_model" translate="label" type="select" sortOrder="150" showInDefault="1"
+                           showInWebsite="1" showInStore="1">
+                        <label>Attach Model</label>
+                        <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                    </field>
+                    <field id="model_code" translate="label" type="select" sortOrder="160" showInDefault="1"
+                           showInWebsite="1" showInStore="1">
+                        <label>Model Attribute Code</label>
+                        <source_model>Magenest\SuperEasySeo\Model\Config\Source\Attributes</source_model>
+                        <depends>
+                            <field id="enabled_model">1</field>
+                        </depends>
+                    </field>
+                    <field id="enabled_gtin" translate="label" type="select" sortOrder="170" showInDefault="1"
+                           showInWebsite="1" showInStore="1">
+                        <label>Attach Gtin</label>
+                        <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                    </field>
+                    <field id="gtin_code" translate="label" type="select" sortOrder="180" showInDefault="1"
+                           showInWebsite="1" showInStore="1">
+                        <label>Gtin Attribute Code</label>
+                        <source_model>Magenest\SuperEasySeo\Model\Config\Source\Attributes</source_model>
+                        <depends>
+                            <field id="enabled_gtin">1</field>
+                        </depends>
+                    </field>
+                    <field id="enabled_weight" translate="label" type="select" sortOrder="190" showInDefault="1"
+                           showInWebsite="1" showInStore="1">
+                        <label>Attach Weight</label>
+                        <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                    </field>
+                    <field id="enabled_condition" translate="label" type="select" sortOrder="200" showInDefault="1"
+                           showInWebsite="1" showInStore="1">
+                        <label>Attach Condition</label>
+                        <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                    </field>
+                    <field id="condition_code" translate="label" type="select" sortOrder="210" showInDefault="1"
+                           showInWebsite="1" showInStore="1">
+                        <label>Condition Attribute Code</label>
+                        <source_model>Magenest\SuperEasySeo\Model\Config\Source\Attributes</source_model>
+                        <depends>
+                            <field id="enabled_condition">1</field>
+                        </depends>
+                    </field>
+                    <field id="condition_value_new" translate="label" type="text" sortOrder="220" showInDefault="1"
+                           showInWebsite="1" showInStore="1">
+                        <label>Condition Value For New</label>
+                        <depends>
+                            <field id="enabled_condition">1</field>
+                        </depends>
+                    </field>
+                    <field id="condition_value_used" translate="label" type="text" sortOrder="230" showInDefault="1"
+                           showInWebsite="1" showInStore="1">
+                        <label>Condition Value For Used</label>
+                        <depends>
+                            <field id="enabled_condition">1</field>
+                        </depends>
+                    </field>
+                    <field id="condition_value_refurbished" translate="label" type="text" sortOrder="235"
+                           showInDefault="1" showInWebsite="1" showInStore="1">
+                        <label>Condition Value For Refushed</label>
+                        <depends>
+                            <field id="enabled_condition">1</field>
+                        </depends>
+                    </field>
+                    <field id="condition_value_damaged" translate="label" type="text" sortOrder="240" showInDefault="1"
+                           showInWebsite="1" showInStore="1">
+                        <label>Condition Value For Damaged</label>
+                        <depends>
+                            <field id="enabled_condition">1</field>
+                        </depends>
+                    </field>
+                    <field id="condition_value_default" translate="label" type="select" sortOrder="250"
+                           showInDefault="1" showInWebsite="1" showInStore="1">
+                        <label>Default Value For Condition</label>
+                        <source_model>Magenest\SuperEasySeo\Model\Config\Source\Conditions</source_model>
+                        <depends>
+                            <field id="enabled_condition">1</field>
+                        </depends>
+                    </field>
+                    <field id="enabled_custom_prorerty" translate="label" type="select" sortOrder="260"
+                           showInDefault="1" showInWebsite="1" showInStore="1">
+                        <label>Add Custom Properties</label>
+                        <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                    </field>
+                    <field id="custom_prorerties" translate="label comment" type="textarea" sortOrder="270"
+                           showInDefault="1" showInWebsite="1" showInStore="1">
+                        <label>Custom Properties</label>
+                        <comment><![CDATA[A comma-delimited list of <a href="http://schema.org/Product">schema.org</a> property name and attribute codes.<br /><b>Example:</b><br />
+                                mpn,mpn_code <br />
+                                For JSON-LD will be converted to: <br> { ... "mpn":"12343" ... }<br />
+                        ]]>
+                        </comment>
+                        <depends>
+                            <field id="enabled_custom_prorerty">1</field>
+                        </depends>
+                    </field>
+                </group>
+                <group id="category" translate="label" type="text" sortOrder="20" showInDefault="1" showInWebsite="1"
+                       showInStore="1">
+                    <label>Category (Show with Product List)</label>
+                    <field id="enabled_snippet" translate="label" type="select" sortOrder="10" showInDefault="1"
+                           showInWebsite="1" showInStore="1">
+                        <label>Enable Rich Snippets</label>
+                        <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                    </field>
+                    <field id="enabled_graph" translate="label" type="select" sortOrder="20" showInDefault="1"
+                           showInWebsite="1" showInStore="1">
+                        <label>Enable In Open Graph</label>
+                        <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                    </field>
+                    <field id="add_product_offers" translate="label" type="select" sortOrder="30" showInDefault="1"
+                           showInWebsite="1" showInStore="1">
+                        <label>Show Product Offers</label>
+                        <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                    </field>
+                    <field id="robots_restriction" translate="label" type="select" sortOrder="40" showInDefault="1"
+                           showInWebsite="1" showInStore="1">
+                        <label>Disable for NOINDEX Robots</label>
+                        <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                    </field>
+                </group>
+                <group id="page" translate="label" type="text" sortOrder="30" showInDefault="1" showInWebsite="1"
+                       showInStore="1">
+                    <label>Page</label>
+                    <field id="enabled_graph" translate="label" type="select" sortOrder="10" showInDefault="1"
+                           showInWebsite="1" showInStore="1">
+                        <label>Enable In Open Graph</label>
+                        <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                    </field>
+                    <field id="enabled_tw" translate="label comment" type="select" sortOrder="20" showInDefault="1"
+                           showInWebsite="1" showInStore="1">
+                        <label>Enable In Twitter Cards</label>
+                        <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                        <comment>
+                            <![CDATA[To enable the feature, make sure you enter Twitter Username in the Common section.]]></comment>
+                    </field>
+                </group>
+                <group id="website" translate="label" type="text" sortOrder="40" showInDefault="1" showInWebsite="1"
+                       showInStore="1">
+                    <label>Website</label>
+                    <field id="enabled_snippet" translate="label" type="select" sortOrder="10" showInDefault="1"
+                           showInWebsite="1" showInStore="1">
+                        <label>Enable In Rich Snippets</label>
+                        <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                    </field>
+                    <field id="enabled_graph" translate="label" type="select" sortOrder="20" showInDefault="1"
+                           showInWebsite="1" showInStore="1">
+                        <label>Enable In Open Graph</label>
+                        <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                    </field>
+                    <field id="enabled_tw" translate="label comment" type="select" sortOrder="25" showInDefault="1"
+                           showInWebsite="1" showInStore="1">
+                        <label>Enable In Twitter Cards</label>
+                        <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                        <comment>
+                            <![CDATA[To enable the feature, make sure you enter Twitter Username in the Common section.]]></comment>
+                    </field>
+                    <field id="name" translate="label" type="text" sortOrder="30" showInDefault="1" showInWebsite="1"
+                           showInStore="1">
+                        <label>Website Name</label>
+                    </field>
+                    <field id="description" translate="label" type="textarea" sortOrder="40" showInDefault="1"
+                           showInWebsite="1" showInStore="1">
+                        <label>Website About</label>
+                    </field>
+                </group>
+                <group id="seller" translate="label" type="text" sortOrder="50" showInDefault="1" showInWebsite="1"
+                       showInStore="1">
+                    <label>Store Owner</label>
+                    <field id="enabled_snippet" translate="label comment" type="select" sortOrder="10" showInDefault="1"
+                           showInWebsite="1" showInStore="1">
+                        <label>Enable In Rich Snippets</label>
+                        <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                    </field>
+                    <field id="type" translate="label" type="select" sortOrder="20" showInDefault="1" showInWebsite="1"
+                           showInStore="1">
+                        <label>Type (list on Schema.org)</label>
+                        <source_model>Magenest\SuperEasySeo\Model\Config\Source\SellerTypes</source_model>
+                    </field>
+                    <field id="name" translate="label" type="text" sortOrder="30" showInDefault="1" showInWebsite="1"
+                           showInStore="1">
+                        <label>Name</label>
+                    </field>
+                    <field id="price_range" translate="label" type="text" sortOrder="35" showInDefault="1"
+                           showInStore="1" showInWebsite="1">
+                        <label>Price Range</label>
+                    </field>
+                    <field id="upload_image_id" translate="label comment" type="image" sortOrder="50" showInDefault="1" showInWebsite="1" showInStore="1">
+                        <label>Select Image</label>
+                        <backend_model>Magenest\SuperEasySeo\Model\Config\Backend\Image</backend_model>
+                        <base_url type="media" scope_info="1">yourfolder</base_url>
+                    </field>
+                    <field id="description" translate="label" type="textarea" sortOrder="40" showInDefault="1"
+                           showInWebsite="1" showInStore="1">
+                        <label>Description</label>
+                    </field>
+                    <field id="same_as_links" translate="label comment" type="textarea" sortOrder="50" showInDefault="1"
+                           showInWebsite="1" showInStore="1">
+                        <label>Social Links</label>
+                        <comment>
+                            <![CDATA[The list of social media links <br /><b>Example:</b><br />https://twitter.com/magenest<br />https://www.facebook.com/magenest]]></comment>
+                    </field>
+                    <field id="phone" translate="label comment" type="text" sortOrder="60" showInDefault="1"
+                           showInWebsite="1" showInStore="1">
+                        <label>Phone</label>
+                    </field>
+                    <field id="fax" translate="label " type="text" sortOrder="70" showInDefault="1" showInWebsite="1"
+                           showInStore="1">
+                        <label>Fax</label>
+                    </field>
+                    <field id="email" translate="label" type="text" sortOrder="80" showInDefault="1" showInWebsite="1"
+                           showInStore="1">
+                        <label>Email</label>
+                    </field>
+                    <field id="location" translate="label" type="text" sortOrder="90" showInDefault="1"
+                           showInWebsite="1" showInStore="1">
+                        <label>Location</label>
+                    </field>
+                    <field id="region" translate="label" type="text" sortOrder="100" showInDefault="1" showInWebsite="1"
+                           showInStore="1">
+                        <label>Region Id</label>
+                    </field>
+                    <field id="street" translate="label" type="text" sortOrder="110" showInDefault="1" showInWebsite="1"
+                           showInStore="1">
+                        <label>Street</label>
+                    </field>
+                    <field id="postcode" translate="label" type="text" sortOrder="120" showInDefault="1"
+                           showInWebsite="1" showInStore="1">
+                        <label>ZIP Code</label>
+                    </field>
+                </group>
+                <group id="breadcrumbs" translate="label" type="text" sortOrder="60" showInDefault="1" showInWebsite="1"
+                       showInStore="1">
+                    <label>Breadcrumbs</label>
+                    <field id="enabled_snippet" translate="label " type="select" sortOrder="10" showInDefault="1"
+                           showInWebsite="1" showInStore="1">
+                        <label>Enable</label>
+                        <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                    </field>
+                </group>
+                <group id="common" translate="label" type="text" sortOrder="70" showInDefault="1" showInWebsite="1"
+                       showInStore="1">
+                    <label>Twitter</label>
+                    <field id="username_tw" translate="label" type="text" sortOrder="40" showInDefault="1"
+                           showInWebsite="1" showInStore="1">
+                        <label>Username</label>
+                    </field>
+                </group>
+                <!--<group id="google+" translate="label" type="text" sortOrder="80" showInDefault="1" showInWebsite="1" showInStore="1">-->
+                <!--<label>Google+ Structured Data</label>-->
+                <!--<field id="enabled" translate="label" type="text" sortOrder="40" showInDefault="1" showInWebsite="1" showInStore="1">-->
+                <!--<label>Twitter Username</label>-->
+                <!--</field>-->
+                <!--</group>-->
+            </group>
+            <group id="general" translate="label" sortOrder="5" showInDefault="1">
+                <label>Enable Magenest Robot Meta Tag</label>
+                <field id="enable" translate="label comment" type="select" sortOrder="10" showInDefault="1"
+                       showInWebsite="1" showInStore="1">
+                    <label>Enable Robot Meta Tag</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+                <group id="noncms" translate="label" type="text" sortOrder="20" showInDefault="1" showInWebsite="1"
+                       showInStore="1">
+                    <label>Non-CMS Pages</label>
+
+                    <field id="checkout" translate="label" type="select" sortOrder="10" showInDefault="1"
+                           showInWebsite="1"
+                           showInStore="0">
+                        <label>Checkout Pages</label>
+                        <source_model>Magenest\SuperEasySeo\Model\Config\Source\RobotOptions</source_model>
+                    </field>
+
+                    <field id="contact" translate="label" type="select" sortOrder="10" showInDefault="1"
+                           showInWebsite="1"
+                           showInStore="0">
+                        <label>Contact Us Page</label>
+                        <source_model>Magenest\SuperEasySeo\Model\Config\Source\RobotOptions</source_model>
+                    </field>
+
+                    <field id="customer" translate="label" type="select" sortOrder="10" showInDefault="1"
+                           showInWebsite="1"
+                           showInStore="0">
+                        <label>Customer Account Pages</label>
+                        <source_model>Magenest\SuperEasySeo\Model\Config\Source\RobotOptions</source_model>
+                    </field>
+
+                    <field id="product_compare" translate="label" type="select" sortOrder="10" showInDefault="1"
+                           showInWebsite="1"
+                           showInStore="0">
+                        <label>Product Compare Pages</label>
+                        <source_model>Magenest\SuperEasySeo\Model\Config\Source\RobotOptions</source_model>
+                    </field>
+
+                    <field id="rss" translate="label" type="select" sortOrder="10" showInDefault="1" showInWebsite="1"
+                           showInStore="0">
+                        <label>RSS Feeds</label>
+                        <source_model>Magenest\SuperEasySeo\Model\Config\Source\RobotOptions</source_model>
+                    </field>
+
+                    <field id="catalogsearch" translate="label" type="select" sortOrder="10" showInDefault="1"
+                           showInWebsite="1"
+                           showInStore="0">
+                        <label>Search Pages</label>
+                        <source_model>Magenest\SuperEasySeo\Model\Config\Source\RobotOptions</source_model>
+                    </field>
+
+                    <field id="sendfriend" translate="label" type="select" sortOrder="10" showInDefault="1"
+                           showInWebsite="1"
+                           showInStore="0">
+                        <label>Send Product Pages</label>
+                        <source_model>Magenest\SuperEasySeo\Model\Config\Source\RobotOptions</source_model>
+                    </field>
+
+                    <field id="wishlist" translate="label" type="select" sortOrder="10" showInDefault="1"
+                           showInWebsite="1"
+                           showInStore="0">
+                        <label>Wishlist Pages</label>
+                        <source_model>Magenest\SuperEasySeo\Model\Config\Source\RobotOptions</source_model>
+                    </field>
+                </group>
+                <group id="cms" translate="label" type="text" sortOrder="30" showInDefault="1" showInWebsite="1"
+                       showInStore="1">
+                    <label>Additional Pages</label>
+                    <comment>
+                        <![CDATA[
+                        <h2>Can be either a full action name or a request path. Wildcard allowed
+                        <br/>
+                        <b>Examples:</b>
+                        <br/>
+                        sitemap_*
+                        <br/>
+                        sitemap/*
+                        <br/>
+                        rss_*
+                        <br/>
+                        rss/*</h3>
+                        <br/>
+                        ]]>
+                    </comment>
+
+                    <field id="i_f" translate="label comment" sortOrder="6" type="textarea" showInDefault="1"
+                           showInWebsite="1"
+                           showInStore="1">
+                        <label>INDEX, FOLLOW Robots Meta Header for Additional Pages</label>
+                    </field>
+
+                    <field id="ni_f" translate="label comment" sortOrder="7" type="textarea" showInDefault="1"
+                           showInWebsite="1"
+                           showInStore="1">
+                        <label>NOINDEX, FOLLOW Robots Meta Header for Additional Pages</label>
+                    </field>
+
+                    <field id="i_nf" translate="label comment" sortOrder="8" type="textarea" showInDefault="1"
+                           showInWebsite="1"
+                           showInStore="1">
+                        <label>INDEX, NOFOLLOW Robots Meta Header for Additional Pages</label>
+                    </field>
+
+                    <field id="ni_nf" translate="label comment" sortOrder="9" type="textarea" showInDefault="1"
+                           showInWebsite="1"
+                           showInStore="1">
+                        <label>NOINDEX, NOFOLLOW Robots Meta Header for Additional Pages</label>
+                    </field>
+                </group>
+            </group>
+            <group id="canonicalization" showInDefault="1" showInWebsite="1" showInStore="1" sortOrder="15">
+                <label>Canonicalization</label>
+                <field id="canonical_tags" translate="label" type="multiselect" sortOrder="10"
+                       showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Add Canonical tags</label>
+                    <source_model>Magenest\SuperEasySeo\Model\Config\Source\Canonical</source_model>
+                    <comment>
+                        <![CDATA[Set pages will receive SEO value when there are different versions of a page with the same content.]]></comment>
+                </field>
+            </group>
+        </section>
+    </system>
+</config>

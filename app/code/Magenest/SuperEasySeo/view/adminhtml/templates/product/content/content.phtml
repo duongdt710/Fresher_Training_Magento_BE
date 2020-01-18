@@ -1,0 +1,62 @@
+<?php
+/**
+ * Created by PhpStorm.
+ * User: lamken
+ * Date: 6/8/17
+ * Time: 2:56 PM
+ */
+?>
+<?php /** @var $block  \Magenest\SuperEasySeo\Block\Adminhtml\Product\Content\Content */ ?>
+<?php
+$data = $block->getProductInfo();
+$checkMetaTitle = $data['checkMetaTitle'];
+$checkMetaDes = $data['checkMetaDes'];
+$inputText = $data['inputText'];
+$checkKeyUrl = $data['checkKeyUrl'];
+$metaDes = $data['metaDes'];
+$metaTitle = $data['metaTitle'];
+$description = $data['description'];
+$paragraph = $data['paragraph'];
+?>
+<ul class="analysis-list">
+    <li class="<?php if ($inputText['check'] == 'true') {
+        echo 'style-green';
+    } ?> <?php if ($inputText['check'] == 'false') {
+        echo 'style-red';
+    } ?>"><?php echo $inputText['content'] ?></li>
+    <li class="<?php if ($checkMetaTitle['check'] == 'true') {
+        echo 'style-green';
+    } ?> <?php if ($checkMetaTitle['check'] == 'false') {
+        echo 'style-red';
+    } ?>"><?php echo $checkMetaTitle['content'] ?></li>
+    <li class="<?php if ($checkMetaDes['check'] == 'true') {
+        echo 'style-green';
+    } ?> <?php if ($checkMetaDes['check'] == 'false') {
+        echo 'style-red';
+    } ?>"><?php echo $checkMetaDes['content'] ?></li>
+    <li class="<?php if ($checkKeyUrl['check'] == 'true') {
+        echo 'style-green';
+    } ?> <?php if ($checkKeyUrl['check'] == 'false') {
+        echo 'style-red';
+    } ?>"><?php echo $checkKeyUrl['content'] ?></li>
+    <li class="<?php if ($metaDes['check'] == 'true') {
+        echo 'style-green';
+    } ?> <?php if ($metaDes['check'] == 'false') {
+        echo 'style-red';
+    } ?>"><?php echo $metaDes['content'] ?></li>
+    <li class="<?php if ($metaTitle['check'] == 'true') {
+        echo 'style-green';
+    } ?> <?php if ($metaTitle['check'] == 'false') {
+        echo 'style-red';
+    } ?>"><?php echo $metaTitle['content'] ?></li>
+    <li class="<?php if ($description['check'] == 'true') {
+        echo 'style-green';
+    } ?> <?php if ($description['check'] == 'false') {
+        echo 'style-red';
+    } ?>"><?php echo $description['content'] ?></li>
+    <li class="<?php if ($paragraph['check'] == 'true') {
+        echo 'style-green';
+    } ?> <?php if ($paragraph['check'] == 'false') {
+        echo 'style-red';
+    } ?>"><?php echo $paragraph['content'] ?></li>
+</ul>

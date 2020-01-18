@@ -1,0 +1,206 @@
+.seo__toolbar {
+    position: fixed;
+    bottom: 15px;
+    right: 15px;
+    font-size: 15px;
+    outline: 5px solid rgba(74, 69, 66, 0.6);
+    border-radius: 0;
+    z-index: 1000000;
+    box-shadow: 2px 2px 2px 0 rgba(50, 50, 50, 0.25);
+    max-width: 420px;
+}
+.seo__toolbar.toolbar-hidden{
+    outline: none;
+    box-shadow: none;
+}
+.seo__toolbar.toolbar-hidden .seo__toolbar-header {
+    box-shadow: 2px 2px 2px 0 rgba(50, 50, 50, 0.25);
+    cursor: pointer;
+    border-radius: 3px;
+
+}
+.seo__toolbar .seo__toolbar-header {
+    font-weight: 600;
+    color: #fff;
+    background: #315aa5;
+    padding: 10px 20px 10px 35px;
+    text-align: center;
+    position: relative;
+    cursor: pointer;
+}
+.seo__toolbar .seo__toolbar-header > i {
+    position: absolute;
+    left: 10px;
+    font-size: 15px;
+}
+.seo__toolbar.toolbar-hidden .seo__toolbar-header .close {
+    display: none;
+}
+.seo__toolbar.toolbar-hidden .seo__toolbar-content {
+    display: none;
+}
+.seo__toolbar .seo__toolbar-content {
+    background: #fefefe;
+    padding: 10px 10px 10px 0;
+}
+.seo__toolbar .seo__toolbar-header .close {
+    position: absolute;
+    right: 10px;
+    top: 9px;
+    font-size: 18px;
+    cursor: pointer;
+}
+.seo__toolbar .seo__toolbar-content ul{
+    list-style: none;
+    margin-bottom: 0;
+    padding-left: 0;
+}
+.seo__toolbar .seo__toolbar-content ul li{
+    padding: 5px;
+    padding-left: 25px;
+    position: relative;
+    border-bottom: 1px solid #eee;
+}
+.seo__toolbar .seo__toolbar-content p{
+    margin: 0;
+    line-height: 1.5;
+}
+.seo__toolbar .seo__toolbar-content li.status-success:before{
+    position: absolute;
+    content:"\f00c";
+    color: #1d9d74;
+    top: 5px;
+    left: 3px;
+    display: inline-block;
+    font: normal normal normal 14px/1 FontAwesome;
+    font-size: inherit;
+    text-rendering: auto;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    font-size: 15px;
+}
+.seo__toolbar .seo__toolbar-content li.status-warning:before{
+    position: absolute;
+    content: "\f05a";
+    color: #FF5501;
+    top: 5px;
+    left: 3px;
+    display: inline-block;
+    font: normal normal normal 14px/1 FontAwesome;
+    font-size: inherit;
+    text-rendering: auto;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    font-size: 15px;
+}
+.seo__toolbar .seo__toolbar-content .status-success-message {
+    color: #1d9d74;
+}
+.seo__toolbar .seo__toolbar-content .status-warning-message{
+    color: #FF5501;
+}
+.seo__toolbar .seo__toolbar-content .seo__toolbar-keywords > div i {
+    width: 100px;
+    background: rgba(29, 157, 116, 0.27);
+    height: 5px;
+    display: inline-block;
+    position: relative;
+    margin-bottom: 5px;
+    border-radius: 1px;
+    overflow: hidden;
+    margin-right: 1rem;
+}
+.seo__toolbar-keywords > div span {
+    width: 200px;
+    overflow: hidden;
+    display: inline-block;
+    margin-right: 1rem;
+}
+.seo__toolbar .seo__toolbar-content .seo__toolbar-keywords > div i > i {
+    position: absolute;
+    top: 0;
+    left: 0;
+    background: #1D9D74;
+}
+@media(max-width: 425px){
+    .seo__toolbar{
+        max-width: 90%;
+    }
+}
+
+.box-gg{
+    position: relative;
+    left: 50%;
+    transform: translateX(-50%);
+    max-width: 582px;
+    font-family: 'Arial';
+
+}
+.box-gg a{
+    font-size: 18px;
+    font-weight: normal;
+    text-decoration: none;
+    color: #1a0dab;
+    text-overflow: ellipsis;
+    display: block;
+    overflow: hidden;
+    white-space: nowrap;
+}
+.box-gg a:hover{
+    text-decoration: underline;
+}
+.box-gg .link{
+    max-width: 93%;
+    text-overflow: ellipsis;
+    display: block;
+    overflow: hidden;
+    white-space: nowrap;
+    color: #006621;
+    font-size: 14px;
+    line-height: 18px;
+    float: left;
+}
+.box-gg .sort-desc:after{
+    content: "\f0d7";
+    font-size: 14px;
+    color: #006621;
+    font-family: 'FontAwesome';
+    margin-left: 5px;
+}
+.box-gg .rating{
+    color: #808080;
+    line-height: 18px;
+    font-size: 14px;
+}
+.box-gg .star-box{
+    display: block;
+    width: 65px;
+    height: 18px;
+    float: left;
+    position: relative;
+}
+.box-gg .star-box .star-background {
+    color: #aaa;
+    position: absolute;
+    left: 0;
+    top: 0;
+    z-index: 2;
+}
+.box-gg .star-box .star{
+    display: block;
+    overflow: hidden;
+    height: 18px;
+    color: #e7711b;
+    position: absolute;
+    left: 0;
+    top: 0;
+    z-index: 100;
+}
+.box-gg .rating .text{
+    margin-left: 5px;
+}
+.box-gg .content{
+    color: #545454;
+    font-size: 14px;
+}
+

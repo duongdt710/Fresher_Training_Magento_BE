@@ -1,0 +1,37 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Copyright © 2017 Magenest. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+-->
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" layout="admin-2columns-left" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <update handle="editor"/>
+    <body>
+        <referenceContainer name="content">
+            <block class="Magenest\SuperEasySeo\Block\Adminhtml\Product\Edit" name="seo_product_edit"/>
+        </referenceContainer>
+        <referenceContainer name="left">
+            <block class="Magenest\SuperEasySeo\Block\Adminhtml\Product\Edit\Tabs" name="seo_produc_edit_tabs">
+                <!--<block class="Magenest\SuperEasySeo\Block\Adminhtml\Product\Edit\Tab\General" name="seo_produc_edit_tab_general"/>-->
+                <!--<action method="addTab">-->
+                    <!--<argument name="name" xsi:type="string">seo_edit_tabs_default</argument>-->
+                    <!--<argument name="block" xsi:type="string">seo_produc_edit_tab_general</argument>-->
+                <!--</action>-->
+                <!--<block class="Magenest\SuperEasySeo\Block\Adminhtml\Product\Edit\Tab\Attribute" name="seo_produc_edit_tab_attribute"/>-->
+                <!--<action method="addTab">-->
+                    <!--<argument name="name" xsi:type="string">seo_edit_tabs_attribute</argument>-->
+                    <!--<argument name="block" xsi:type="string">seo_produc_edit_tab_attribute</argument>-->
+                <!--</action>-->
+                <!--<block class="Magenest\SuperEasySeo\Block\Adminhtml\Product\Edit\Tab\Product" name="seo_produc_edit_tab_product"/>-->
+                <!--<action method="addTab">-->
+                    <!--<argument name="name" xsi:type="string">seo_edit_tabs_product</argument>-->
+                    <!--<argument name="block" xsi:type="string">seo_produc_edit_tab_product</argument>-->
+                <!--</action>-->
+            </block>
+        </referenceContainer>
+        <referenceContainer name="js">
+            <block class="Magenest\SuperEasySeo\Block\Adminhtml\Product\Edit\Js" template="product/js.phtml"/>
+        </referenceContainer>
+    </body>
+</page>

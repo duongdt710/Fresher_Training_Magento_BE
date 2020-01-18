@@ -1,0 +1,63 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Copyright © 2020 Magenest. All rights reserved.
+ * See LICENSE.txt for license details.
+ */
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+    <virtualType name="Magenest\SuperEasySeo\Model\ResourceModel\Preview\Category\Grid\Collection" type="Magento\Framework\View\Element\UiComponent\DataProvider\SearchResult">
+        <arguments>
+            <argument name="mainTable" xsi:type="string">catalog_category_entity</argument>
+            <argument name="resourceModel" xsi:type="string">Magento\Catalog\Model\ResourceModel\Category</argument>
+        </arguments>
+    </virtualType>
+    <virtualType name="Magenest\SuperEasySeo\Model\ResourceModel\Autolink\Grid\Collection" type="Magento\Framework\View\Element\UiComponent\DataProvider\SearchResult">
+        <arguments>
+            <argument name="mainTable" xsi:type="string">magenest_seo_autolink</argument>
+            <argument name="resourceModel" xsi:type="string">Magenest\SuperEasySeo\Model\ResourceModel\Autolink</argument>
+        </arguments>
+    </virtualType>
+    <virtualType name="Magenest\SuperEasySeo\Model\ResourceModel\Redirect\Grid\Collection" type="Magento\Framework\View\Element\UiComponent\DataProvider\SearchResult">
+        <arguments>
+            <argument name="mainTable" xsi:type="string">magenest_seo_redirect</argument>
+            <argument name="resourceModel" xsi:type="string">Magenest\SuperEasySeo\Model\ResourceModel\Redirect</argument>
+        </arguments>
+    </virtualType>
+
+    <virtualType name="Magenest\SuperEasySeo\Model\ResourceModel\Brand\Collection" type="Magento\Framework\View\Element\UiComponent\DataProvider\SearchResult">
+        <arguments>
+            <argument name="mainTable" xsi:type="string">brand</argument>
+            <argument name="resourceModel" xsi:type="string">Magenest\SuperEasySeo\Model\ResourceModel\Brand</argument>
+        </arguments>
+    </virtualType>
+
+    <virtualType name="Magenest\SuperEasySeo\Model\ResourceModel\Information\Grid\Collection" type="Magento\Framework\View\Element\UiComponent\DataProvider\SearchResult">
+        <arguments>
+            <argument name="mainTable" xsi:type="string">magenest_seo_optimizer_config</argument>
+            <argument name="resourceModel" xsi:type="string">Magenest\SuperEasySeo\Model\ResourceModel\OptimizerConfig</argument>
+        </arguments>
+    </virtualType>
+    <type name="Magento\Framework\View\Element\UiComponent\DataProvider\CollectionFactory">
+        <arguments>
+            <argument name="collections" xsi:type="array">
+                <item name="seo_previewproduct_listing_data_source" xsi:type="string">Magento\Catalog\Model\ResourceModel\Product\Collection</item>
+                <item name="seo_product_template_listing_data_source" xsi:type="string">Magenest\SuperEasySeo\Model\ResourceModel\Template\Grid\Collection</item>
+                <item name="seo_category_template_listing_data_source" xsi:type="string">Magenest\SuperEasySeo\Model\ResourceModel\Template\Product\Grid\Collection</item>
+                <item name="seo_autolink_listing_data_source" xsi:type="string">Magenest\SuperEasySeo\Model\ResourceModel\Autolink\Grid\Collection</item>
+                <item name="seo_redirect_listing_data_source" xsi:type="string">Magenest\SuperEasySeo\Model\ResourceModel\Redirect\Grid\Collection</item>
+                <item name="seo_preview_category_listing_data_source" xsi:type="string">Magenest\SuperEasySeo\Model\ResourceModel\Preview\Category\Grid\Collection</item>
+                <item name="optimizer_information_listing_data_source" xsi:type="string">Magenest\SuperEasySeo\Model\ResourceModel\Information\Grid\Collection</item>
+                <item name="seo_brand_listing_data_source" xsi:type="string">Magenest\SuperEasySeo\Model\ResourceModel\Brand\Collection</item>
+            </argument>
+        </arguments>
+    </type>
+
+    <preference for="Magento\Cms\Controller\Noroute\Index" type="Magenest\SuperEasySeo\Controller\Noroute\Index" />
+    <type name="Magento\Framework\App\FrontController">
+        <plugin name="dispatch" type="Magenest\SuperEasySeo\Model\Plugin\RegisterUrlRewrite" sortOrder="1000"/>
+    </type>
+    <preference for="Magenest\SuperEasySeo\Api\Config\CmsSitemapConfigInterface" type="Magenest\SuperEasySeo\Service\Config\CmsSitemapConfig" />
+    <preference for="Magenest\SuperEasySeo\Api\Config\LinkSitemapConfigInterface" type="Magenest\SuperEasySeo\Service\Config\LinkSitemapConfig" />
+
+</config>
